@@ -4,6 +4,8 @@
 <script>
 export default {
   name: 'Plot',
-  data () {}
+  data () {
+    return {}
+  }
 }
 </script>

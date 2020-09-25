@@ -7,11 +7,11 @@
         :icon="item.icon"
         :label="item.label"
       >
-        <q-card>
+        <!-- <q-card>
           <q-card-section>
             ##
           </q-card-section>
-        </q-card>
+        </q-card> -->
       </q-expansion-item>
     </q-list>
   </div>
@@ -19,10 +19,15 @@
 <script>
 export default {
   name: 'ExpandedItems',
+  created: {
+    init () {
+
+    }
+  },
   data () {
     return {
       ListItems: [{
-        label: 'user', icon: 'settings', path: '/user_history'
+        label: 'user', icon: 'person', path: '/user_history'
       }, {
         label: 'signal', icon: 'wifi', path: '/signal'
       }, {

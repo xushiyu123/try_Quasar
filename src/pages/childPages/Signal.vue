@@ -4,6 +4,8 @@
 <script>
 export default {
   name: 'Signal',
-  data () {}
+  data () {
+    return { }
+  }
 }
 </script>

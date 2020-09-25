@@ -11,9 +11,9 @@
         <q-btn flat icon="menu" >
           <q-menu>
             <div class="row no-wrap q-pa-md">
-              <q-btn-group id="statics" v-for="item in citems" :key= "item">
+              <!-- <q-btn-group id="statics" v-for="item in citems" :key= "item">
                 <q-btn label="{item}" />
-              </q-btn-group>
+              </q-btn-group> -->
               <q-separator vertical inset class="q-mx-lg" />
             </div>
           </q-menu>
@@ -37,9 +37,6 @@ export default {
     RightDialog
   },
   props: {
-    citems: {
-      type: Array
-    }
   },
   methods: {
     toggle (e) {

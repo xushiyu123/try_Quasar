@@ -15,7 +15,7 @@
     <!-- 左侧列表 -->
     <expanded-items></expanded-items>
     </q-drawer>
-    <q-page-container>
+    <q-page-container :key="channelCode">
       <!-- table -->
       <!-- <Table></Table> -->
       <router-view />
@@ -35,7 +35,6 @@
 // import Table from 'components/Table'
 import ExpandedItems from 'components/ExpandedItems'
 import PublicHeader from 'components/PublicHeader'
-import { getUserRouters } from '../service'
 
 export default {
   name: 'MainPage',
@@ -44,31 +43,14 @@ export default {
       drawer: false,
       miniState: true,
       left: false,
-      menuItems: []
+      menuItems: [],
+      channelCode: ''
       // right: false
     }
   },
   components: {
     ExpandedItems,
     PublicHeader
-  },
-  created () {
-    this.GeData()
-  },
-  methods: {
-    GeData () {
-      var param = {}
-      getUserRouters(JSON.stringify(param), false).then(res => {
-        if (res.data.status === 'ok') {
-          console.log(res)
-          if (res.data.data.length) {
-            this.data = res.data.data
-          } else {
-
-          }
-        }
-      })
-    }
   }
 }
 </script>

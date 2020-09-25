@@ -34,7 +34,10 @@
 export default {
   name: 'MenuBtn',
   data () {
-    return {}
+    return {
+      mobileData: [],
+      bluetooth: true
+    }
   }
 }
 </script>

@@ -22,7 +22,7 @@
           class="text-white text-center"
         >
           <q-tab-panel name="history">
-            <data-table :ctitle='title' :ccolumns="soeData.columns" :data="soeData.data"></data-table>
+            <data-table :ctitle='title' :ccolumns="soeData.columns" :cdata="soeData.data"></data-table>
           </q-tab-panel>
 
           <q-tab-panel name="alarms">
@@ -61,7 +61,7 @@ export default {
           required: true,
           label: '时间',
           align: 'center',
-          field: row => row.name,
+          field: '时间',
           format: val => `${val}`,
           sortable: true
         },
@@ -70,7 +70,7 @@ export default {
           required: true,
           label: '短地址',
           align: 'center',
-          field: row => row.name,
+          field: '短地址',
           format: val => `${val}`,
           sortable: true
         }, {
@@ -78,12 +78,12 @@ export default {
           required: true,
           label: '状态',
           align: 'center',
-          field: row => row.name,
+          field: '状态',
           format: val => `${val}`,
           sortable: true
         }],
         data: [{
-          序号: 1, 时间: '1600833843.174', 短地址: '测试', 状态: '0 -> 1'
+          name: '2', 序号: 1, 时间: '1600833843.174', 短地址: '测试', 状态: '0 -> 1'
         },
         { 序号: 1, 时间: '1600833843.174', 短地址: '测试', 状态: '0 -> 1' },
         { 序号: 1, 时间: '1600833843.174', 短地址: '测试', 状态: '0 -> 1' },

@@ -19,10 +19,7 @@
 <script>
 export default {
   name: 'ExpandedItems',
-  created: {
-    init () {
-
-    }
+  created () {
   },
   data () {
     return {

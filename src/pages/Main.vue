@@ -1,19 +1,22 @@
 <template>
-  <q-layout id="app" view="hHh lpR fFf">
+  <q-layout
+    id="app"
+    view="hHh lpR fFf"
+  >
     <public-header :citems="{menuItems}"></public-header>
     <q-drawer
-        v-model="drawer"
-        show-if-above
-        :mini="miniState"
-        @mouseover="miniState = false"
-        @mouseout="miniState = true"
-        :width="280"
-        :breakpoint="100"
-        side="left"
-        content-class="bg-grey-3"
-      >
-    <!-- 左侧列表 -->
-    <expanded-items></expanded-items>
+      v-model="drawer"
+      show-if-above
+      :mini="miniState"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
+      :width="280"
+      :breakpoint="100"
+      side="left"
+      content-class="bg-grey-3"
+    >
+      <!-- 左侧列表 -->
+      <expanded-items></expanded-items>
     </q-drawer>
     <q-page-container :key="channelCode">
       <!-- table -->
@@ -30,6 +33,10 @@
   </q-layout>
 </template>
 <style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
 </style>
 <script>
 // import Table from 'components/Table'
@@ -38,7 +45,7 @@ import PublicHeader from 'components/PublicHeader'
 
 export default {
   name: 'MainPage',
-  data () {
+  data() {
     return {
       drawer: false,
       miniState: true,

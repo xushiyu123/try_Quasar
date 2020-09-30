@@ -1,73 +1,79 @@
 <template>
-  <div>
-    <div id="tabs">
-      <div class="q-pa-md">
-        <q-tabs
-          v-model="tab"
-          narrow-indicator
-          dense
-          align="left"
-          class="text-white"
-          inline-label
-          :breakpoint="300"
-        >
-          <q-tab
-            class="bg-primary"
-            name="history"
-            icon="lock"
-            label="history"
-          />
-          <q-tab
-            class="bg-primary"
-            name="alarms"
-            icon="alarm"
-            label="Alarms"
-          />
-          <q-tab
-            class="bg-primary"
-            name="movies"
-            icon="movie"
-            label="Movies"
-          />
-        </q-tabs>
-        <div class="q-pa-md">
-          <q-tab-panels
-            v-model="tab"
-            animated
-            class="text-white text-center"
+  <div class="q-pa-md q-gutter-sm">
+    <q-btn
+      flat
+      icon="visibility"
+      @click="open('center')"
+    />
+    <q-dialog
+      v-model="dialog"
+      :maximized="maximizedToggle"
+      persistent
+    >
+      <q-card class="bg-primary text-white">
+        <q-bar>
+          <q-space />
+          <q-btn
+            dense
+            flat
+            icon="minimize"
+            @click="maximizedToggle = false"
+            :disable="!maximizedToggle"
           >
-            <q-tab-panel name="history">
-              <data-table
-                :ctitle="title"
-                :ccolumns="soeData.columns"
-                :cdata="soeData.data"
-              ></data-table>
-            </q-tab-panel>
+            <q-tooltip
+              v-if="maximizedToggle"
+              content-class="bg-white text-primary"
+            >最小化</q-tooltip>
+          </q-btn>
+          <q-btn
+            dense
+            flat
+            icon="crop_square"
+            @click="maximizedToggle = true"
+            :disable="maximizedToggle"
+          >
+            <q-tooltip
+              v-if="!maximizedToggle"
+              content-class="bg-white text-primary"
+            >最大化</q-tooltip>
+          </q-btn>
+          <q-btn
+            dense
+            flat
+            icon="close"
+            v-close-popup
+          >
+            <q-tooltip content-class="bg-white text-primary">关闭</q-tooltip>
+          </q-btn>
+        </q-bar>
 
-            <q-tab-panel name="alarms">
-              <data-table :ctitle="title"></data-table>
-            </q-tab-panel>
-
-            <q-tab-panel name="movies">
-              <data-table :ctitle="title"></data-table>
-            </q-tab-panel>
-          </q-tab-panels>
-        </div>
-      </div>
-    </div>
+        <q-card-section class="bg-grey">
+          <data-table
+            :ctitle="title"
+            :ccolumns="soeData.columns"
+            :cdata="soeData.data"
+          ></data-table>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 <style scoped>
+* {
+  padding: 0;
+  margin: 2px;
+}
 </style>
 <script>
 import DataTable from 'components/DataTable'
 
 export default {
-  name: 'UserHistory',
+  name: 'TipDialog',
   data() {
     return {
-      title: '用户历史数据',
-      tab: 'history',
+      dialog: false,
+      maximizedToggle: false,
+      title: '对话框',
       soeData: {
         columns: [
           {
@@ -130,7 +136,12 @@ export default {
   },
   components: {
     DataTable
+  },
+  methods: {
+    open(position) {
+      this.position = position
+      this.dialog = true
+    }
   }
 }
-// 取数据，绑定
 </script>

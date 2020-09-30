@@ -1,6 +1,13 @@
 <template>
-  <div class="q-pa-md" style="max-width: 350px">
-    <q-list class="rounded-borders" v-for="item in ListItems" :key="item.label">
+  <div
+    class="q-pa-md"
+    style="max-width: 350px"
+  >
+    <q-list
+      class="rounded-borders"
+      v-for="item in ListItems"
+      :key="item.label"
+    >
       <q-expansion-item
         expand-separator
         :to="item.path"
@@ -19,14 +26,14 @@
 <script>
 export default {
   name: 'ExpandedItems',
-  created () {
+  created() {
   },
-  data () {
+  data() {
     return {
       ListItems: [{
         label: 'user', icon: 'person', path: '/user_history'
       }, {
-        label: 'signal', icon: 'wifi', path: '/signal'
+        label: 'steps', icon: 'directions', path: '/signal'
       }, {
         label: 'drafts', icon: 'drafts', path: '/plot'
       }]

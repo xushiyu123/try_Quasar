@@ -1,15 +1,7 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
-    <q-btn
-      flat
-      icon="visibility"
-      @click="open('center')"
-    />
-    <q-dialog
-      v-model="dialog"
-      :maximized="maximizedToggle"
-      persistent
-    >
+    <q-btn flat icon="visibility" @click="open('center')" />
+    <q-dialog v-model="dialog" :maximized="maximizedToggle" persistent>
       <q-card class="bg-primary text-white">
         <q-bar>
           <q-space />
@@ -23,7 +15,8 @@
             <q-tooltip
               v-if="maximizedToggle"
               content-class="bg-white text-primary"
-            >最小化</q-tooltip>
+              >最小化</q-tooltip
+            >
           </q-btn>
           <q-btn
             dense
@@ -35,14 +28,10 @@
             <q-tooltip
               v-if="!maximizedToggle"
               content-class="bg-white text-primary"
-            >最大化</q-tooltip>
+              >最大化</q-tooltip
+            >
           </q-btn>
-          <q-btn
-            dense
-            flat
-            icon="close"
-            v-close-popup
-          >
+          <q-btn dense flat icon="close" v-close-popup>
             <q-tooltip content-class="bg-white text-primary">关闭</q-tooltip>
           </q-btn>
         </q-bar>
@@ -69,7 +58,7 @@ import DataTable from 'components/DataTable'
 
 export default {
   name: 'TipDialog',
-  data() {
+  data () {
     return {
       dialog: false,
       maximizedToggle: false,
@@ -138,7 +127,7 @@ export default {
     DataTable
   },
   methods: {
-    open(position) {
+    open (position) {
       this.position = position
       this.dialog = true
     }

@@ -1,20 +1,16 @@
 <template>
   <div class="q-pa-md">
-    <q-table
-      class="my-sticky-header-column-table"
-      :title="ctitle"
-      :data="cdata"
-      :columns="ccolumns"
-      :filter="filter"
-    >
+    <q-table class="my-sticky-header-column-table"
+             :title="ctitle"
+             :data="cdata"
+             :columns="ccolumns"
+             :filter="filter">
       <template v-slot:top-right>
-        <q-input
-          borderless
-          dense
-          debounce="300"
-          v-model="filter"
-          placeholder="Search"
-        >
+        <q-input borderless
+                 dense
+                 debounce="300"
+                 v-model="filter"
+                 placeholder="Search">
           <template v-slot:append>
             <q-icon name="search" />
           </template>
@@ -24,23 +20,16 @@
         <!-- {{props.row}} -->
         <!-- {{props.cols}} -->
         <q-tr :props="props">
-          <q-td
-            v-for="(val,key) in props.row"
-            :key="key"
-          >
+          <q-td v-for="(val,key) in props.row"
+                :key="key">
             {{val}}
-            <q-popup-edit
-              :v-model="key"
-              buttons
-            >
-              <q-input
-                type="text"
-                :v-model="key"
-                :value="val"
-                dense
-                autofocus
-                counter
-              />
+            <q-popup-edit v-model="props.row"
+                          buttons>
+              <q-input type="text"
+                       v-model="props.row[key]"
+                       dense
+                       autofocus
+                       counter />
             </q-popup-edit>
           </q-td>
         </q-tr>
@@ -83,7 +72,7 @@ export default {
       type: Array
     }
   },
-  data() {
+  data () {
     return {
       filter: ''
     }
